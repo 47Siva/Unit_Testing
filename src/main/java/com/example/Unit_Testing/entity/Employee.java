@@ -1,11 +1,11 @@
 package com.example.Unit_Testing.entity;
 
-import jakarta.persistence.Column;
+import java.util.UUID;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,20 +16,21 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "bank_accuont_details")
-public class Bank_AC {
+
+public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id ;
+	private UUID id;
 	
-	@Column(name = "Account_Number")
-	private long ac_No;
+	private String name;
 	
-	@Column(name = "Account_holder_name")
-	private String ac_holder_name;
+	private String job;
 	
-	@Column(name = "Balance")
-	private double balance;
+	private long number;
+	
+	private double salary;
+	
+	private String address; 
+	
 }

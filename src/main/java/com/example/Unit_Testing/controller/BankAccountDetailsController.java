@@ -1,7 +1,5 @@
 package com.example.Unit_Testing.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,19 +10,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.Unit_Testing.dto.BlanaceCheck;
-import com.example.Unit_Testing.entity.Bank_AC;
-import com.example.Unit_Testing.service.Bank_Account_Services;
+import com.example.Unit_Testing.entity.BankAc;
+import com.example.Unit_Testing.service.BankAccountServices;
 
 @RestController
 @RequestMapping("/api/accountcontroller")
-public class Bank_Account_Details_Controller {
+public class BankAccountDetailsController {
 
 	@Autowired
-	Bank_Account_Services services;
+	BankAccountServices services;
 
 	@PostMapping("/post")
-	public String create(@RequestBody Bank_AC request) {
+	public String create(@RequestBody BankAc request) {
 
 		services.create(request);
 
@@ -32,7 +29,7 @@ public class Bank_Account_Details_Controller {
 	}
 
 	@PostMapping("/deposit")
-	public Object Deposit(@RequestBody Bank_AC request) throws Exception {
+	public Object Deposit(@RequestBody BankAc request) throws Exception {
 
 		return services.deposit(request);
 	}
@@ -43,7 +40,7 @@ public class Bank_Account_Details_Controller {
 	}
 
 	@PutMapping("/withdraw")
-	public Object withdraw(@RequestBody Bank_AC request) throws Exception {
+	public Object withdraw(@RequestBody BankAc request) throws Exception {
 
 		return services.withdraw(request);
 	}

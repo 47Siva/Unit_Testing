@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.example.Unit_Testing.dto.BlanaceCheck;
-import com.example.Unit_Testing.entity.Bank_AC;
+import com.example.Unit_Testing.entity.BankAc;
 
 @Repository
-public interface Bank_Account_Repository extends JpaRepository<Bank_AC, Integer> {
+public interface BankAccountRepository extends JpaRepository<BankAc, Integer> {
 
 	@Query(value = "select balance as Balance from bank_accuont_details where id=:id",nativeQuery = true)
 	BlanaceCheck findBybalance(int id);

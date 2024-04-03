@@ -2,23 +2,21 @@ package com.example.Unit_Testing.service;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.Unit_Testing.dto.BlanaceCheck;
-import com.example.Unit_Testing.entity.Bank_AC;
-import com.example.Unit_Testing.repository.Bank_Account_Repository;
+import com.example.Unit_Testing.entity.BankAc;
+import com.example.Unit_Testing.repository.BankAccountRepository;
 
 @Service
-public class Bank_Account_Services {
+public class BankAccountServices {
 
 	@Autowired
-	Bank_Account_Repository repository;
+	BankAccountRepository repository;
 
-	public Bank_AC create(Bank_AC request) {
+	public BankAc create(BankAc request) {
 
 		return repository.save(request);
 	}
@@ -26,7 +24,7 @@ public class Bank_Account_Services {
 	public Object checkbalance3(int id) {
 
 		Optional<Object> balance = repository.findbalance(id);
-		Optional<Bank_AC> Account = repository.findById(id);
+		Optional<BankAc> Account = repository.findById(id);
 		Map<String, Object> response = new HashMap<>();
 
 		if (Account.isPresent()) {
@@ -38,13 +36,12 @@ public class Bank_Account_Services {
 		}
 	}
 
-	public Object deposit(Bank_AC request)  {
-		Optional<Bank_AC> account = repository.findById(request.getId());
+	public Object deposit(BankAc request)  {
+		Optional<BankAc> account = repository.findById(request.getId());
 
 		Map<String, Object> response = new HashMap<>();
-
 		if (account.isPresent()) {
-			Bank_AC Ac = account.get();
+			BankAc Ac = account.get();
 			Ac.setBalance(Ac.getBalance() + request.getBalance());
 			repository.save(Ac);
 
@@ -57,14 +54,14 @@ public class Bank_Account_Services {
 
 	}
 
-	public Object withdraw(Bank_AC request) {
+	public Object withdraw(BankAc request) {
 
-		Optional<Bank_AC> account = repository.findById(request.getId());
+		Optional<BankAc> account = repository.findById(request.getId());
 
 		Map<String, Object> response = new HashMap<>();
 
 		if (account.isPresent()) {
-			Bank_AC Ac = account.get();
+			BankAc Ac = account.get();
 			if (Ac.getBalance() < request.getBalance()) {
 				return "Insufficient balance";
 			} else {
@@ -83,10 +80,10 @@ public class Bank_Account_Services {
 	public Object closeAccount(int id) {
 
 		Map<String, Object> response = new HashMap<>();
-		Optional<Bank_AC> account = repository.findById(id);
+		Optional<BankAc> account = repository.findById(id);
 
 		if (account.isPresent()) {
-			Bank_AC Ac = account.get();
+			BankAc Ac = account.get();
 			if (Ac.getBalance() == 0) {
 				repository.deleteById(id);
 				return "Your Account was Closed";
