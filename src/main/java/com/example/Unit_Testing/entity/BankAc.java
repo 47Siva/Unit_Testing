@@ -25,11 +25,11 @@ public class BankAc {
 	private int id ;
 	
 	@Column(name = "Account_Number")
-	private long ac_No;
+	private long acNo;
 	
 	@Column(name = "Account_holder_name")
-	private String ac_holder_name;
+	private String acHolderName;
 	
-	@Column(name = "Balance")
-	private double balance;
+	@Column(name = "Balance_Amount")
+	private double amount;
 }

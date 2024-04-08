@@ -1,7 +1,5 @@
 package com.example.Unit_Testing.entity;
 
-import java.util.UUID;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,12 +14,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-
 public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private UUID id;
+	private int id;
 	
 	private String name;
 	
@@ -31,6 +28,6 @@ public class Employee {
 	
 	private double salary;
 	
-	private String address; 
+	private String email; 
 	
 }

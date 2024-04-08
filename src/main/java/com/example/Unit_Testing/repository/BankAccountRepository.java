@@ -12,10 +12,10 @@ import com.example.Unit_Testing.entity.BankAc;
 @Repository
 public interface BankAccountRepository extends JpaRepository<BankAc, Integer> {
 
-	@Query(value = "select balance as Balance from bank_accuont_details where id=:id",nativeQuery = true)
+	@Query(value = "select balance_amount as Balance from bank_accuont_details where id=:id",nativeQuery = true)
 	BlanaceCheck findBybalance(int id);
 
-	@Query(value = "select balance as balance from bank_accuont_details where id=:id",nativeQuery = true)
+	@Query(value = "select balance_amount as balance from bank_accuont_details where id=:id",nativeQuery = true)
 	Optional<Object> findbalance(int id);
 
 	

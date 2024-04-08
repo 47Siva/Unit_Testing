@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Unit_Testing.entity.BankAc;
-import com.example.Unit_Testing.service.BankAccountServices;
+import com.example.Unit_Testing.service.BankAccountService;
 
 @RestController
 @RequestMapping("/api/accountcontroller")
 public class BankAccountDetailsController {
 
 	@Autowired
-	BankAccountServices services;
+	BankAccountService services;
 
 	@PostMapping("/post")
 	public String create(@RequestBody BankAc request) {

@@ -1,7 +1,13 @@
 package com.example.Unit_Testing.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -15,8 +21,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.stereotype.Service;
 
 import com.example.Unit_Testing.entity.BankAc;
+import com.example.Unit_Testing.entity.Employee;
 import com.example.Unit_Testing.repository.BankAccountRepository;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,29 +34,31 @@ public class BankAcServiceTest {
 	public BankAccountRepository account_Repository;
 
 	@InjectMocks
-	public BankAccountServices account_Services;
+	public BankAccountService account_Services;
 
 	@Test
 	public void testDeposit() {
 		// Arrange
-		// mock data
 		BankAc existingAccount = new BankAc();
 		existingAccount.setId(1);
-		existingAccount.setBalance(1000); // Existing balance
+		existingAccount.setAmount(1000); // Existing balance
 
-		// Deposit amount
 		BankAc request = new BankAc();
 		request.setId(1);
-		request.setBalance(500); // Deposit Amount
+		request.setAmount(500); // Deposit Amount
 
 		// Act
 		when(account_Repository.findById(1)).thenReturn(Optional.of(existingAccount));
 		when(account_Repository.save(existingAccount)).thenReturn(existingAccount);
 
-		Object deposit = account_Services.deposit(request);
-		Map<String, Object> result = new HashMap<>();
-		result.put("Message", "successfully Deposit");
-		result.put("Balance", 1500.0);
+		Object result = account_Services.deposit(request);
+		Map<String, Object> deposit = new HashMap<>();
+		deposit.put("Message", "successfully Deposit");
+		deposit.put("Balance", 1500.0);
+		
+	    Map <String,Object> deposit2 = new HashMap<>();
+	    deposit2.put("Message","amount was not deposit");
+	    deposit2.put("Balance", 0);
 		
 		// Verify
 		verify(account_Repository, times(1)).save(existingAccount);
@@ -56,14 +66,19 @@ public class BankAcServiceTest {
 		// Assertion
 		assertNotNull(existingAccount);
 		assertEquals(deposit, result);
+		assertNotEquals(deposit2,result);
 		assertEquals("successfully Deposit", ((Map<String, Object>) deposit).get("Message"));
 		assertEquals(1500.0, ((Map<String, Object>) deposit).get("Balance"));
+		assertFalse(result.equals(deposit2));
+		assertTrue(result.equals(deposit));
+		assertNotSame(deposit, result);
+//		assertThat(result);
+		assertSame(result, result);
 	}
 
 	@Test
 	public void testAccountNotfound() {
 		// Arrange
-		// mock data
 		BankAc existingAccount = new BankAc();
 		existingAccount.setId(1);
 
@@ -80,14 +95,13 @@ public class BankAcServiceTest {
 	public void testWithdrawSufficientFunds() {
 
 		// Arrange
-		// mock Data
 		BankAc existingAccount = new BankAc();
 		existingAccount.setId(1);
-		existingAccount.setBalance(1000);// Existing balance
+		existingAccount.setAmount(1000);// Existing balance
 
 		BankAc request = new BankAc();
 		request.setId(1);
-		request.setBalance(500);// withdraw Amount
+		request.setAmount(500);// withdraw Amount
 
 		// Act
 		when(account_Repository.findById(1)).thenReturn(Optional.of(existingAccount));
@@ -107,14 +121,13 @@ public class BankAcServiceTest {
 	@Test
 	public void testWithdrawInsufficientFunds() {
 		// Arrange
-		// mock Data
 		BankAc existingAccount = new BankAc();
 		existingAccount.setId(1);
-		existingAccount.setBalance(1000);// Existing balance
+		existingAccount.setAmount(1000);// Existing balance
 
 		BankAc request = new BankAc();
 		request.setId(1);
-		request.setBalance(1500);// withdraw Amount
+		request.setAmount(1500);// withdraw Amount
 
 		// Act
 		when(account_Repository.findById(1)).thenReturn(Optional.of(existingAccount));
@@ -129,10 +142,9 @@ public class BankAcServiceTest {
 	@Test
 	public void testCloseAccount() {
 		// Arrange
-		// mock Data
 		BankAc existingAccount = new BankAc();
 		existingAccount.setId(1);
-		existingAccount.setBalance(0);
+		existingAccount.setAmount(0);
 
 		// Act
 		when(account_Repository.findById(1)).thenReturn(Optional.of(existingAccount));

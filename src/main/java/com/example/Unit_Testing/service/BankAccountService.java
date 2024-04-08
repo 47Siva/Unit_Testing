@@ -11,7 +11,7 @@ import com.example.Unit_Testing.entity.BankAc;
 import com.example.Unit_Testing.repository.BankAccountRepository;
 
 @Service
-public class BankAccountServices {
+public class BankAccountService {
 
 	@Autowired
 	BankAccountRepository repository;
@@ -19,6 +19,7 @@ public class BankAccountServices {
 	public BankAc create(BankAc request) {
 
 		return repository.save(request);
+		
 	}
 
 	public Object checkbalance3(int id) {
@@ -42,11 +43,11 @@ public class BankAccountServices {
 		Map<String, Object> response = new HashMap<>();
 		if (account.isPresent()) {
 			BankAc Ac = account.get();
-			Ac.setBalance(Ac.getBalance() + request.getBalance());
+			Ac.setAmount(Ac.getAmount() + request.getAmount());
 			repository.save(Ac);
 
 			response.put("Message", "successfully Deposit");
-			response.put("Balance", Ac.getBalance());
+			response.put("Balance", Ac.getAmount());
 			return response;
 		} else {
 			return "Account not found";
@@ -62,13 +63,14 @@ public class BankAccountServices {
 
 		if (account.isPresent()) {
 			BankAc Ac = account.get();
-			if (Ac.getBalance() < request.getBalance()) {
+			if (Ac.getAmount() < request.getAmount()) {
 				return "Insufficient balance";
 			} else {
-				Ac.setBalance(Ac.getBalance() - request.getBalance());
+				Ac.setAmount(Ac.getAmount() - request.getAmount()
+						);
 				repository.save(Ac);
 				response.put("Message", "successfully withdraw");
-				response.put("Balance", Ac.getBalance());
+				response.put("Balance", Ac.getAmount());
 				return response;
 			}
 		} else {
@@ -79,12 +81,12 @@ public class BankAccountServices {
 
 	public Object closeAccount(int id) {
 
-		Map<String, Object> response = new HashMap<>();
+//		Map<String, Object> response = new HashMap<>();
 		Optional<BankAc> account = repository.findById(id);
 
 		if (account.isPresent()) {
 			BankAc Ac = account.get();
-			if (Ac.getBalance() == 0) {
+			if (Ac.getAmount()== 0) {
 				repository.deleteById(id);
 				return "Your Account was Closed";
 			} else {
