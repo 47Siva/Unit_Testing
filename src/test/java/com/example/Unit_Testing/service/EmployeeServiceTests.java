@@ -85,13 +85,15 @@ public class EmployeeServiceTests {
 
 	@Test
     public void testGetEmployeeByIdNotFound() {
-        when(employeeRepository.findById(2)).thenReturn(Optional.empty());
+		
+		int employeeId = 2;
+        when(employeeRepository.findById(employeeId)).thenReturn(Optional.empty());
         Exception exception = null;
         try {
             service.get(2);
         } catch (ResourceNotFoundException ex) {
             exception = ex;
         }
-        assertEquals("Employee not found with ID: 2", exception.getMessage());
+        assertEquals("Employee not found with ID: "+employeeId, exception.getMessage());
     }
 }
