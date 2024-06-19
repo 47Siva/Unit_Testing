@@ -1,13 +1,19 @@
 package com.example.Unit_Testing.service;
 
+
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.Unit_Testing.common.ResourceNotFoundException;
 import com.example.Unit_Testing.entity.Employee;
 import com.example.Unit_Testing.repository.EmployeeRepository;
+import com.example.Unit_Testing.repository.PagenationRepository;
 import com.example.Unit_Testing.validator.EmployeeValidator;
 
 @Service
@@ -18,6 +24,9 @@ public class EmployeeService {
 
 	@Autowired
 	EmployeeValidator validator;
+	
+	@Autowired
+	PagenationRepository pagenationRepository;
 
 	public Object save(Employee employee) {
 		if (validator.isNull(employee)) {
@@ -49,5 +58,18 @@ public class EmployeeService {
 			  throw new ResourceNotFoundException("Employee not found with ID: " + id);
 		 }
 	}
+
+	public ResponseEntity<?> listsave(List<Employee> employee) {
+		List <Employee> emp = employeeRepository.saveAll(employee);
+		return ResponseEntity.ok(emp);
+	}
+
+	public ResponseEntity<?> getAll(Pageable pageable) {
+		Page<Employee> emp = pagenationRepository.findAll(pageable);
+		
+		return ResponseEntity.ok(emp);
+	}
+
+	
 
 }
