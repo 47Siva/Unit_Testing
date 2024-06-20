@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.example.Unit_Testing.common.ResourceNotFoundException;
 import com.example.Unit_Testing.entity.Employee;
 import com.example.Unit_Testing.repository.EmployeeRepository;
-import com.example.Unit_Testing.repository.PagenationRepository;
+import com.example.Unit_Testing.repository.PaginationRepository;
 import com.example.Unit_Testing.validator.EmployeeValidator;
 
 @Service
@@ -26,7 +26,7 @@ public class EmployeeService {
 	EmployeeValidator validator;
 	
 	@Autowired
-	PagenationRepository pagenationRepository;
+	PaginationRepository pagenationRepository;
 
 	public Object save(Employee employee) {
 		if (validator.isNull(employee)) {
