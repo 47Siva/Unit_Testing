@@ -1,4 +1,4 @@
-package com.example.Unit_Testing.dto;
+package com.example.UnitTesting.dto;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,7 +27,7 @@ public class Pagination {
 		Pagination pagination = Pagination.builder()
 				                .isFirst(page.isFirst())
 				                .isLast(page.isLast())
-				                .pageNumber(page.getNumber())
+				                .pageNumber(page.getNumber()+1)
 				                .pageSize(page.getSize())
 				                .totalCount(page.getTotalElements())
 				                .totalpage(page.getTotalPages()).build();

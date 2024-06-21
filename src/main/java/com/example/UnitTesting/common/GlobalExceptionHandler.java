@@ -1,4 +1,4 @@
-package com.example.Unit_Testing.common;
+package com.example.UnitTesting.common;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

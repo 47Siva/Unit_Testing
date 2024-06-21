@@ -1,4 +1,4 @@
-package com.example.Unit_Testing.service;
+package com.example.UnitTesting.service;
 
 
 import java.util.List;
@@ -10,11 +10,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.Unit_Testing.common.ResourceNotFoundException;
-import com.example.Unit_Testing.entity.Employee;
-import com.example.Unit_Testing.repository.EmployeeRepository;
-import com.example.Unit_Testing.repository.PaginationRepository;
-import com.example.Unit_Testing.validator.EmployeeValidator;
+import com.example.UnitTesting.common.ResourceNotFoundException;
+import com.example.UnitTesting.entity.Employee;
+import com.example.UnitTesting.repository.EmployeeRepository;
+import com.example.UnitTesting.repository.PaginationRepository;
+import com.example.UnitTesting.validator.EmployeeValidator;
 
 @Service
 public class EmployeeService {

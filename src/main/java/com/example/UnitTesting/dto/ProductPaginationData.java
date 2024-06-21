@@ -1,8 +1,8 @@
-package com.example.Unit_Testing.dto;
+package com.example.UnitTesting.dto;
 
 import java.util.List;
 
-import com.example.Unit_Testing.entity.Product;
+import com.example.UnitTesting.entity.Product;
 
 import lombok.Builder;
 import lombok.Data;

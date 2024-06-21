@@ -15,10 +15,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.example.Unit_Testing.common.ResourceNotFoundException;
-import com.example.Unit_Testing.entity.Employee;
-import com.example.Unit_Testing.repository.EmployeeRepository;
-import com.example.Unit_Testing.validator.EmployeeValidator;
+import com.example.UnitTesting.common.ResourceNotFoundException;
+import com.example.UnitTesting.entity.Employee;
+import com.example.UnitTesting.repository.EmployeeRepository;
+import com.example.UnitTesting.service.EmployeeService;
+import com.example.UnitTesting.validator.EmployeeValidator;
 
 @ExtendWith(MockitoExtension.class)
 public class EmployeeServiceTests {

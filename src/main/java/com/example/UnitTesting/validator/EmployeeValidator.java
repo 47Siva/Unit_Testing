@@ -1,4 +1,4 @@
-package com.example.Unit_Testing.validator;
+package com.example.UnitTesting.validator;
 
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.example.Unit_Testing.entity.Employee;
-import com.example.Unit_Testing.repository.EmployeeRepository;
+import com.example.UnitTesting.entity.Employee;
+import com.example.UnitTesting.repository.EmployeeRepository;
 
 @Component
 public class EmployeeValidator {

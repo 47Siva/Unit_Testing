@@ -1,4 +1,4 @@
-package com.example.Unit_Testing.controller;
+package com.example.UnitTesting.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.Unit_Testing.entity.BankAc;
-import com.example.Unit_Testing.service.BankAccountService;
+import com.example.UnitTesting.entity.BankAc;
+import com.example.UnitTesting.service.BankAccountService;
 
 @RestController
 @RequestMapping("/api/accountcontroller")

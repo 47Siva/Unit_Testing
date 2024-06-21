@@ -1,4 +1,4 @@
-package com.example.Unit_Testing.dto;
+package com.example.UnitTesting.dto;
 
 public interface BlanaceCheck {
 	

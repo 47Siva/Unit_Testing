@@ -1,4 +1,4 @@
-package com.example.Unit_Testing;
+package com.example.UnitTesting;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

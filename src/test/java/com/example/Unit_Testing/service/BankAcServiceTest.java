@@ -23,9 +23,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.stereotype.Service;
 
-import com.example.Unit_Testing.entity.BankAc;
-import com.example.Unit_Testing.entity.Employee;
-import com.example.Unit_Testing.repository.BankAccountRepository;
+import com.example.UnitTesting.entity.BankAc;
+import com.example.UnitTesting.entity.Employee;
+import com.example.UnitTesting.repository.BankAccountRepository;
+import com.example.UnitTesting.service.BankAccountService;
 
 @ExtendWith(MockitoExtension.class)
 public class BankAcServiceTest {

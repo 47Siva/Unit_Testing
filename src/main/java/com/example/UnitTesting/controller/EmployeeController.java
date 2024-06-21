@@ -1,4 +1,4 @@
-package com.example.Unit_Testing.controller;
+package com.example.UnitTesting.controller;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.Unit_Testing.entity.Employee;
-import com.example.Unit_Testing.service.EmployeeService;
+import com.example.UnitTesting.entity.Employee;
+import com.example.UnitTesting.service.EmployeeService;
 
 @RestController
 @RequestMapping("/api/employee")

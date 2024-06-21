@@ -1,4 +1,4 @@
-package com.example.Unit_Testing.service;
+package com.example.UnitTesting.service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.Unit_Testing.entity.BankAc;
-import com.example.Unit_Testing.repository.BankAccountRepository;
+import com.example.UnitTesting.entity.BankAc;
+import com.example.UnitTesting.repository.BankAccountRepository;
 
 @Service
 public class BankAccountService {
